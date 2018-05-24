@@ -1,9 +1,24 @@
 package main
 
+
+//-------------------
+// Import Statements
+//-------------------
+
 import "fmt"
 
 
+//-------------------
+//       Type
+//-------------------
+
 type deck []string 			               // create a new type: deck which is a slice of type: string
+
+
+
+//-------------------
+//     Functions
+//-------------------
 
 /*
  *  newDeck
