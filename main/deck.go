@@ -10,6 +10,7 @@ import
 	"fmt"
 	"strings"
 	"io/ioutil"
+	"os"
 )
 //-------------------
 //       Type
@@ -50,6 +51,23 @@ func newDeck() deck{
 }
 
 
+
+/*
+ *  deal
+ *
+ *  deals out a hand of cards
+ *
+ * Input param  : d deck and handSize int
+ *
+ * Return param : two decks
+ */
+func deal(d deck, handSize int) (deck, deck)  {
+
+	return d[:handSize], d[handSize:]  // returns one deck from 0 - handSize and one with remaining elements
+
+
+}
+
 /*
  *  print
  *
@@ -78,6 +96,30 @@ func (d deck) toString() string {
 }
 
 
+/*
+ *  newDeckFromFile
+ *
+ *  Locates file on disk and reads
+ *
+ *  returns deck
+ */
+func newDeckFromFile(fileName string) deck{
+
+	bs,err :=  ioutil.ReadFile(fileName)     // bs: byteSlice, err: error object.
+
+	if err != nil {  			             // Scenario 1: if error returned from ReadFile call
+
+		fmt.Print("Error: ", err)	     //  log error
+
+		os.Exit(1) 				     // quits program
+	}
+											 // Scenario 2: No error when reading file
+
+	s := strings.Split(string(bs), ",") // convert bs to type string and use split func to return as slice of strings s
+
+	return deck(s)  						 // return s after coverted to type deck
+
+}
 
 /*
  *  saveToFile
@@ -94,23 +136,6 @@ func (d deck) saveToFile(fileName string) error{
 
 	return ioutil.WriteFile(fileName,[]byte(d.toString()), 0666) // coverts deck to string then byte slice and saves to file
 																// 0666: Anyone can read/write to the file
-
-}
-
-
-/*
- *  deal
- *
- *  deals out a hand of cards
- *
- * Input param  : d deck and handSize int
- *
- * Return param : two decks
- */
-func deal(d deck, handSize int) (deck, deck)  {
-
-	return d[:handSize], d[handSize:]  // returns one deck from 0 - handSize and one with remaining elements
-
 
 }
 

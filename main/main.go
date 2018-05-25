@@ -1,6 +1,5 @@
 package main
 
-import "fmt"
 
 /******************************************
  *
@@ -28,9 +27,10 @@ func main() {
 
 
 
-	cards := newDeck()
+	cards := newDeckFromFile("myCards")
 
-	fmt.Println(cards.toString())
+	cards.print()
+
 
 	}
 
