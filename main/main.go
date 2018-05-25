@@ -14,9 +14,7 @@ package main
  * 3. deal			  : deal a hand of cards
  * 4. saveToFile	  : save deck to file
  * 5. newDeckFromFile : load the deck from file
- *
- * To Do:
- * 1. shuffle         : shuffle the deck
+ * 6. shuffle         : shuffle the deck
  *
  ******************************************/
 
@@ -25,11 +23,18 @@ package main
 func main() {
 
 
-	cards := newDeck()
+	cards := newDeck()									// create a new deck
 
-	cards.shuffle()
+	cards.shuffle() 									// shuffle the deck
 
-	cards.print()
+	cards.print() 									 	// print the deck
+
+	cards.saveToFile("newCardFile") 			// save deck to file
+
+	cards2 := newDeckFromFile("newCardFile")   // load deck from file
+
+	cards2.print() 										// print the deck
+
 
 
 	}
