@@ -62,5 +62,18 @@ func (d deck) print() {
 	}
 }
 
+/*
+ *  deal
+ *
+ *  deals out a hand of cards
+ *
+ * Input param  : d deck and handSize int
+ *
+ * Return param : two decks
+ */
+func deal(d deck, handSize int) (deck, deck)  {
+
+	return d[:handSize], d[handSize:]  // returns one deck from 0 - handSize and one with remaining elements
 
 
+}
