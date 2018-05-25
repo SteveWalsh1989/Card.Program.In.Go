@@ -61,7 +61,7 @@ func newDeck() deck{
  *
  * Input param  : d deck and handSize int
  *
- * Return param : two decks
+ * Return param : first deck of size handSize, second deck is remaining cards
  */
 func deal(d deck, handSize int) (deck, deck)  {
 
@@ -143,7 +143,7 @@ func newDeckFromFile(fileName string) deck{
 
 	s := strings.Split(string(bs), ",") // convert bs to type string and use split func to return as slice of strings s
 
-	return deck(s)  						 // return s after coverted to type deck
+	return deck(s)  						 // return s after converted to type deck
 
 }
 
@@ -161,7 +161,7 @@ func newDeckFromFile(fileName string) deck{
 func (d deck) saveToFile(fileName string) error{
 
 	return ioutil.WriteFile(fileName,[]byte(d.toString()), 0666) // coverts deck to string then byte slice and saves to file
-																// 0666: Anyone can read/write to the file
+																       // 0666: Anyone can read/write to the file
 
 }
 
