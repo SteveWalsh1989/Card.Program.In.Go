@@ -12,22 +12,22 @@ package main
  * 1. Create new deck of card
  * 2. Print all cards in a card to console
  * 3. deal			  : deal a hand of cards
+ * 4. saveToFile	  : save deck to file
+ * 5. newDeckFromFile : load the deck from file
  *
  * To Do:
  * 1. shuffle         : shuffle the deck
- * 2. saveToFile	  : save deck to file
- * 3. newDeckFromFile : load the deck from file
  *
  ******************************************/
-
 
 
 
 func main() {
 
 
+	cards := newDeck()
 
-	cards := newDeckFromFile("myCards")
+	cards.shuffle()
 
 	cards.print()
 

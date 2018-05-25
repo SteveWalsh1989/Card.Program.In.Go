@@ -11,6 +11,8 @@ import
 	"strings"
 	"io/ioutil"
 	"os"
+	"math/rand"
+	"time"
 )
 //-------------------
 //       Type
@@ -65,6 +67,30 @@ func deal(d deck, handSize int) (deck, deck)  {
 
 	return d[:handSize], d[handSize:]  // returns one deck from 0 - handSize and one with remaining elements
 
+
+}
+
+/*
+ *  shuffle
+ *
+ *  receiver function for deck
+ *
+ *  shuffles deck by looping through slice
+ *  generating random number between 0 and len(cards) - 1
+ *  Swap the current card and the card at the cards[randomNumber]
+ */
+func (d deck) shuffle() {
+
+	source := rand.NewSource(time.Now().UnixNano()) // seed for random number
+
+	r := rand.New(source)  			      	        // generate new random number each time
+
+	for i := range d {					      		// loop through deck
+
+		newPos := r.Intn(len(d)-1)       			// generates random number between 0 and 1 less than length of slice
+
+		d[i],d[newPos] = d[newPos], d[i] 			// swaps values of index i and new position newPos
+	}
 
 }
 
