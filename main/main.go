@@ -1,5 +1,6 @@
 package main
 
+import "fmt"
 
 /******************************************
  *
@@ -25,15 +26,11 @@ package main
 
 func main() {
 
-	cards := newDeck()  							 // create new deck called cards
-
-	hand, remainingDeck := deal(cards, 5, ) // create a hand from deck
 
 
-	hand.print()       								 // print all cards in the hand
+	cards := newDeck()
 
-	remainingDeck.print()						  	 // print all remaining cards
-
+	fmt.Println(cards.toString())
 
 	}
 

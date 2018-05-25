@@ -5,9 +5,12 @@ package main
 // Import Statements
 //-------------------
 
-import "fmt"
-
-
+import
+(
+	"fmt"
+	"strings"
+	"io/ioutil"
+)
 //-------------------
 //       Type
 //-------------------
@@ -63,6 +66,39 @@ func (d deck) print() {
 }
 
 /*
+ *  toString
+ *
+ *  receiver function for deck
+ *
+ *  converts deck to string
+ */
+func (d deck) toString() string {
+
+	return strings.Join([]string(d), ",") // use string package join func to link elements of []string converted deck by comma
+}
+
+
+
+/*
+ *  saveToFile
+ *
+ *  receiver function for deck
+ *
+ *  Saves string to file
+ *
+ *  Input param: fileName
+ *
+ *  Returns : can return error
+ */
+func (d deck) saveToFile(fileName string) error{
+
+	return ioutil.WriteFile(fileName,[]byte(d.toString()), 0666) // coverts deck to string then byte slice and saves to file
+																// 0666: Anyone can read/write to the file
+
+}
+
+
+/*
  *  deal
  *
  *  deals out a hand of cards
@@ -77,3 +113,5 @@ func deal(d deck, handSize int) (deck, deck)  {
 
 
 }
+
+
