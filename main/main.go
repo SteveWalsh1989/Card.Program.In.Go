@@ -1,11 +1,11 @@
 package main
 
 
+
 /******************************************
  *
  * Cards Project
  *
- * --- Runs from terminal but not in GoLand ---
  *
  *
  * Features:
@@ -21,7 +21,6 @@ package main
 
 
 func main() {
-
 
 	cards := newDeck()									// create a new deck
 
