@@ -1,6 +1,6 @@
 package main
 
-
+import "fmt"
 
 /******************************************
  *
@@ -26,17 +26,32 @@ func main() {
 
 	cards.shuffle() 									// shuffle the deck
 
+	fmt.Println("\n//------------ \n Shuffled Deck " +
+				   "\n//------------ \n")
+
 	cards.print() 									 	// print the deck
 
+
+	fmt.Println("\n//------------ \n Deck read from file " +
+			       "\n//------------ \n")
 	cards.saveToFile("newCardFile") 			// save deck to file
 
+
 	cards2 := newDeckFromFile("newCardFile")   // load deck from file
+
 
 	cards2.print() 										// print the deck
 
 
+	fmt.Println("\n//------------ \n Hand dealt " +
+				   "\n//------------ \n")
 
-	}
+	h1,cards := deal(cards, 5)
+
+	h1.print()
+
+
+}
 
 
 
